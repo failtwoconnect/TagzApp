@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TagzApp.Communication.Configuration;
 using TagzApp.Communication.Extensions;
-using TagzApp.Providers.Discord;
 
 namespace TagzApp.Providers.DiscordChat;
 public class StartDiscordChat : IConfigureProvider

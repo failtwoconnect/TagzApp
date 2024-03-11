@@ -1,7 +1,7 @@
 ﻿using DSharpPlus;
 using Microsoft.Extensions.Logging;
 
-namespace TagzApp.Providers.Discord;
+namespace TagzApp.Providers.DiscordChat;
 
 public class DiscordChatProvider : ISocialMediaProvider, IDisposable
 {
