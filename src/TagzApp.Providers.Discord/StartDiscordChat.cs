@@ -6,7 +6,7 @@ namespace TagzApp.Providers.DiscordChat;
 public class StartDiscordChat : IConfigureProvider
 {
 	private const string ConfigurationKey = "providers:discordchat";
-	private const string _DisplayName = "DiscordChat";
+	private const string _DisplayName = "DISCORDCHAT";
 	private DiscordChatConfiguration? _DiscordChatConfiguration;
 
 	public async Task<IServiceCollection> RegisterServices(IServiceCollection services, CancellationToken cancellationToken = default)

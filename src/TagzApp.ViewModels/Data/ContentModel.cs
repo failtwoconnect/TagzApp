@@ -88,6 +88,7 @@ public record ContentModel(
 		{
 			"blazot" => "bi-blazot",
 			"bluesky" => "icon-bluesky",
+			"discordchat" => "bi-discord",
 			"twitter" => "bi-twitter-x",
 			"website" => "bi-globe2",
 			"youtube-chat" => "bi-youtube",
