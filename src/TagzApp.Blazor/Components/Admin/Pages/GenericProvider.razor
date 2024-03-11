@@ -1,6 +1,7 @@
 ﻿@using TagzApp.Providers.AzureQueue
 @using TagzApp.Providers.Blazot
 @using TagzApp.Providers.Bluesky
+@using TagzApp.Providers.Discord
 @using TagzApp.Providers.TwitchChat
 @using TagzApp.Providers.Mastodon
 @using TagzApp.Blazor.Client.Components.Admin
@@ -25,6 +26,11 @@
 			<Bluesky_Config_Ui Provider="@Provider" />
 			break;
 		}
+	case nameof(DiscordChatProvider):
+		{
+			<Discord_Config_Ui Provider="@Provider" />
+			break;
+		}	
 	case nameof(MastodonProvider):
 		{
 			<Mastodon_Config_Ui Provider="@Provider" />

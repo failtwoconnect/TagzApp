@@ -61,6 +61,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TagzApp.Components", "TagzA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TagzApp.Providers.Bluesky", "TagzApp.Providers.Bluesky\TagzApp.Providers.Bluesky.csproj", "{8E5E8ED0-7261-45E0-AE2A-22975FD1EDA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagzApp.Providers.DiscordChat", "TagzApp.Providers.Discord\TagzApp.Providers.DiscordChat.csproj", "{C0C5C990-1FC0-43A4-94E1-AE122E1F84B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +153,10 @@ Global
 		{8E5E8ED0-7261-45E0-AE2A-22975FD1EDA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E5E8ED0-7261-45E0-AE2A-22975FD1EDA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E5E8ED0-7261-45E0-AE2A-22975FD1EDA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C5C990-1FC0-43A4-94E1-AE122E1F84B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C5C990-1FC0-43A4-94E1-AE122E1F84B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C5C990-1FC0-43A4-94E1-AE122E1F84B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C5C990-1FC0-43A4-94E1-AE122E1F84B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,6 +183,7 @@ Global
 		{D135C491-2B45-49A1-B7CD-B41141475C7C} = {370455D5-6EA6-44C1-B315-B621F7B6A954}
 		{6751D128-B522-4C1A-9B37-5271C0E6C263} = {370455D5-6EA6-44C1-B315-B621F7B6A954}
 		{8E5E8ED0-7261-45E0-AE2A-22975FD1EDA5} = {99E0BB3F-9591-4C7A-A8EE-C54B0C3DE7A5}
+		{C0C5C990-1FC0-43A4-94E1-AE122E1F84B2} = {99E0BB3F-9591-4C7A-A8EE-C54B0C3DE7A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2AD77A5-5B2D-41FC-AD37-8EF8A4E54410}

@@ -1,0 +1,98 @@
+﻿@using System.ComponentModel.DataAnnotations 
+
+<UiProviderConfig ProviderName="DISCORDCHAT" Health="@Health" ProviderIconCssClass="bi-discord">
+
+	<EditForm Model="Model" OnValidSubmit="SaveConfig">
+		<AntiforgeryToken />
+		<ValidationSummary />
+		<dl>
+			
+			
+			<dt><label for="ChatBotName">Chat Bot Name:</label></dt>
+			<dd>
+				<InputText name="ChatBotName" @bind-Value="Model.ChatBotName" placeholder="Twitch Chat Bot Name" />
+				<ValidationMessage For="() => Model.ChatBotName" class="text-danger" />
+			</dd>
+			<dt><label for="OAuthToken">OAuth Token:</label></dt>
+			<dd>
+				<InputText type="password" name="OAuthToken" @bind-Value="Model.OAuthToken" placeholder="Discord OAuth Token" />
+				<ValidationMessage For="() => Model.OAuthToken" class="text-danger" />
+			</dd>
+			<dt><label for="ChannelId">Channel Id:</label></dt>
+			<dd>
+				<InputText name="ChannelId" @bind-Value="Model.ChannelId" placeholder="Twitch Channel Id" />
+				<ValidationMessage For="() => Model.ChannelId" class="text-danger" />
+			</dd>
+			<dt><label for="Enabled">Enabled:</label></dt>
+			<dd>
+				<InputCheckbox name="Enabled" @bind-Value="Model.Enabled" />
+			</dd>
+		</dl>
+
+		<button type="submit" class="btn btn-primary">Save</button>
+
+	</EditForm>
+
+</UiProviderConfig>
+@code {
+    [Parameter, EditorRequired]
+	public ISocialMediaProvider Provider { get; set; } = null!;
+
+	public (SocialMediaStatus Status, string Message) Health { get; set; } = (SocialMediaStatus.Unknown, string.Empty);
+
+
+	public ViewModel Model { get; set; } = new();
+
+	protected override async Task OnParametersSetAsync()
+	{
+
+		var providerConfiguration = await Provider.GetConfiguration(ConfigureTagzAppFactory.Current);
+
+		Model = new ViewModel
+			{
+				ChatBotName = providerConfiguration.GetConfigurationByKey("ChatBotName"),
+				OAuthToken = providerConfiguration.GetConfigurationByKey("OAuthToken"),
+				ChannelId = providerConfiguration.GetConfigurationByKey("ChannelId"),
+				Enabled = string.IsNullOrEmpty(providerConfiguration.GetConfigurationByKey("Enabled")) ? false : bool.Parse(providerConfiguration.GetConfigurationByKey("Enabled"))
+			};
+
+		Health = await Provider.GetHealth();
+
+		await base.OnParametersSetAsync();
+
+	}
+
+	private async Task SaveConfig()
+	{
+
+		var providerConfiguration = await Provider.GetConfiguration(ConfigureTagzAppFactory.Current);
+
+		providerConfiguration.SetConfigurationByKey("ChatBotName", Model.ChatBotName);
+		providerConfiguration.SetConfigurationByKey("OAuthToken", Model.OAuthToken);
+		providerConfiguration.SetConfigurationByKey("ChannelId", Model.ChannelId);
+		providerConfiguration.SetConfigurationByKey("Enabled", Model.Enabled.ToString());
+
+		await Provider.SaveConfiguration(ConfigureTagzAppFactory.Current, providerConfiguration);
+
+	}
+
+	public class ViewModel
+	{
+
+		// add properties for each of the fields you want to edit
+
+		[Required]
+		public string ChatBotName { get; set; } = string.Empty;
+
+		[Required]
+		public string OAuthToken { get; set; } = string.Empty;
+
+		[Required]
+		public string ChannelId { get; set; } = "698527871832031242";
+
+		public bool Enabled { get; set; }
+
+
+	}
+
+}

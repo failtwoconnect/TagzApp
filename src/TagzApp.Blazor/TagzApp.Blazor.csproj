@@ -39,6 +39,7 @@
 		<ProjectReference Include="..\TagzApp.Security\TagzApp.Security.csproj" />
 		<ProjectReference Include="..\TagzApp.Storage.Postgres\TagzApp.Storage.Postgres.csproj" />
 		<ProjectReference Include="..\TagzApp.Storage.Sqlite.Security\TagzApp.Storage.Sqlite.Security.csproj" />
+		<ProjectReference Include="..\TagzApp.Providers.Discord\TagzApp.Providers.DiscordChat.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
