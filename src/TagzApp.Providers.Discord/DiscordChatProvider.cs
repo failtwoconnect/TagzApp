@@ -5,9 +5,9 @@ namespace TagzApp.Providers.DiscordChat;
 
 public class DiscordChatProvider : ISocialMediaProvider, IDisposable
 {
-	public string Id => "DISCORD";
+	public string Id => "DISCORDCHAT";
 
-	public string DisplayName => "DiscordChat";
+	public string DisplayName => "DISCORDCHAT";
 
 	public string Description {get; init;} = "Discord is a voice, video and text communication service to talk and hang out with your friends and communities.";
 
@@ -21,8 +21,10 @@ public class DiscordChatProvider : ISocialMediaProvider, IDisposable
     private SocialMediaStatus _Status = SocialMediaStatus.Unhealthy;
 	public void Dispose()
 	{
-		_Client.Dispose();
+		// Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+		new NotImplementedException();
 	}
+
 
 	public Task<IProviderConfiguration> GetConfiguration(IConfigureTagzApp configure)
 	{
@@ -63,7 +65,8 @@ public class DiscordChatProvider : ISocialMediaProvider, IDisposable
         _Client = new DiscordClient(new DiscordConfiguration
         {
             Token = _Settings.OAuthToken,
-            TokenType = TokenType.Bot
+            TokenType = TokenType.Bot,
+			Intents = DiscordIntents.MessageContents
         });
 
         _Client.MessageCreated += async (s,e) =>
